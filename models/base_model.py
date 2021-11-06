@@ -8,10 +8,15 @@ from datetime import datetime
 
 class BaseModel:
     """class BaseModel that defines all common attributes/methods
-    for other classes"""
+    for other classes
+    """
 
     def __init__(self, *args, **kwargs):
-        """Public instance attributes"""
+        """Public instance attributes
+        args:
+        *args won’t be used
+        **kwargs (dict): Key/value pairs of attributes
+        """
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
@@ -26,7 +31,6 @@ class BaseModel:
                 else:
                     self.__dict__[ky] = val
 
-
     def save(self):
         """Public instance method
         updates the public instance attribute updated_at
@@ -39,7 +43,7 @@ class BaseModel:
         __dict__ of the instance"""
         ret_dict = self.__dict__.copy()
         ret_dict["__class__"] = self.__class__.__name__
-        ret_dict["created_At"] = self.created_at.isoformat()
+        ret_dict["created_at"] = self.created_at.isoformat()
         ret_dict["updated_at"] = self.updated_at.isoformat()
         return ret_dict
 
