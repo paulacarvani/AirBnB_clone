@@ -4,6 +4,7 @@
 
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -25,12 +26,19 @@ class BaseModel:
                     self.__dict__[ky] = datetime.strptime(val, format)
                 else:
                     self.__dict__[ky] = val
+        else:
+            """if it’s a new instance (not from a dictionary representation),
+            add a call to the method new(self) on storage"""
+            models.storage.new(self)
 
     def save(self):
         """Public instance method
         updates the public instance attribute updated_at
         with the current datetime"""
         self.updated_at = datetime.today()
+        """link your BaseModel to FileStorage
+        by using the variable storage"""
+        models.storage.save()
 
     def to_dict(self):
         """Public instance method
