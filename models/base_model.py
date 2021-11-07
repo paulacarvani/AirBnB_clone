@@ -4,19 +4,15 @@
 
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
     """class BaseModel that defines all common attributes/methods
-    for other classes
-    """
+    for other classes"""
 
     def __init__(self, *args, **kwargs):
-        """Public instance attributes
-        args:
-        *args won’t be used
-        **kwargs (dict): Key/value pairs of attributes
-        """
+        """Public instance attributes"""
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
@@ -30,12 +26,15 @@ class BaseModel:
                     self.__dict__[ky] = datetime.strptime(val, format)
                 else:
                     self.__dict__[ky] = val
+        else:
+             models.storage.new(self)
 
     def save(self):
         """Public instance method
         updates the public instance attribute updated_at
         with the current datetime"""
         self.updated_at = datetime.today()
+        models.storage.new(self)
 
     def to_dict(self):
         """Public instance method
