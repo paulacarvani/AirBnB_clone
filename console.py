@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Console Module"""
 import cmd
 
 
@@ -18,6 +19,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """shouldn’t execute anything"""
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
