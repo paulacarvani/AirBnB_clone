@@ -27,7 +27,7 @@ class BaseModel:
                 else:
                     self.__dict__[ky] = val
         else:
-             models.storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         """Public instance method
