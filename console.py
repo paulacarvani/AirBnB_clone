@@ -6,7 +6,7 @@ import cmd
 class HBNBCommand(cmd.Cmd):
     """Command Interpreter"""
 
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def do_quit(self, args):
         """Quit command to exit the program"""
@@ -16,7 +16,7 @@ class HBNBCommand(cmd.Cmd):
         """EOF command to exit the program"""
         return True
 
-    def emptyline(self):
+    def emptyline(self) -> bool:
         """shouldn’t execute anything"""
         pass
 
