@@ -98,5 +98,41 @@ class HBNBCommand(cmd.Cmd):
             m = arg.split()[0]
             my_list = [str(objs[k]) for k in objs if k.split('.')[0] == m]
             print(my_list)
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id by adding or
+        updating attribute (save the change into the JSON file)"""
+        if not arg:
+            print("** class name missing **")
+        elif arg.split()[0] not in classes.keys():
+            print("** class doesn't exist **")
+        elif len(arg.split()) < 2:
+            print("** instance id missing **")
+        else:
+            msg = "{}.{}".format(arg.split()[0], arg.split()[1])
+            objs = storage.all()
+
+            if msg not in objs:
+                print("** no instance found **")
+            else:
+                if len(arg.split()) < 3:
+                    print("** attribute name missing **")
+                elif len(arg.split()) < 4:
+                    print("** value missing **")
+                else:
+                    if arg.split()[3].isdecimal():
+                        setattr(objs[msg], arg.split()[2], int(arg.split()[3]))
+                    else:
+                        try:
+                            val = float(arg.split()[3])
+                            setattr(objs[msg], arg.split()[2], val)
+                        except ValueError:
+                            val = re.split("( |\\\".*?\\\"|'.*?')", arg)
+                            val = [w for w in val if w.strip()]
+                            val = val[3].strip('"')
+                            setattr(objs[msg], arg.split()[2], val)
+                    objs[msg].save()
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
