@@ -11,8 +11,8 @@ from models.place import Place
 from models.review import Review
 import re
 
-classes = {"BaseModel": BaseModel, "User": User, "State": State,\
-    "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+classes = {"BaseModel": BaseModel, "User": User, "State": State,
+           "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -56,5 +56,14 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(arg.split()) < 2:
             print("** instance id missing **")
+        else:
+            msg = "{}.{}".format(arg.split()[0], arg.split()[1])
+            objs = storage.all()
+
+            if msg not in objs:
+                print("** no instance found **")
+            else:
+                print(objs[msg])
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
