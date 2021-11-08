@@ -84,5 +84,19 @@ class HBNBCommand(cmd.Cmd):
                 del(objs[msg])
                 storage.save()
 
+    def do_all(self, arg):
+        """Prints all string representation of all instances
+        based or not on the class name"""
+        objs = storage.all()
+
+        if not arg:
+            my_list = [str(objs[key]) for key in objs]
+            print(my_list)
+        elif arg.split()[0] not in classes.keys():
+            print("** class doesn't exist **")
+        else:
+            m = arg.split()[0]
+            my_list = [str(objs[k]) for k in objs if k.split('.')[0] == m]
+            print(my_list)
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
