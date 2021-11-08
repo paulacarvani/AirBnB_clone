@@ -46,7 +46,7 @@ class BaseModel:
         ret_dict["updated_at"] = self.updated_at.isoformat()
         return ret_dict
 
-def __str__(self):
+    def __str__(self):
         """should print: [<class name>] (<self.id>) <self.__dict__>"""
         classname = self.__class__.__name__
         return "[{}] ({}) {}".format(classname, self.id, self.__dict__)
