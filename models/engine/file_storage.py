@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-This module has one class: FileStorage
-"""
+""" class FileStorage that serializes instances
+to a JSON file and deserializes JSON file to instances"""
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -13,23 +12,23 @@ import json
 
 
 class FileStorage():
-    """
-        File storage console
-    """
-    __file_path = 'file.json'
+    """Private class Atributtes"""
+    __file_path = "file.json"
     __objects = {}
 
+    """Public instance Method"""
+
     def all(self):
-        """All"""
+        """returns the dictionary __objects"""
         return FileStorage.__objects
 
     def new(self, obj):
-        """Sets a object"""
-        key = obj.__class__.__name__ + '.' + obj.id
+        """sets in __objects the obj with key <obj class name>.id"""
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """ Serializes objects to JSON file """
+        """serializes __objects to the JSON file (path: __file_path)"""
         for key, value in FileStorage.__objects.items():
             if not isinstance(value, dict):
                 FileStorage.__objects[key] = value.to_dict()
@@ -38,12 +37,15 @@ class FileStorage():
             json.dump(FileStorage.__objects, json_file)
 
     def reload(self):
-        """Deserializes JSON file objects if file path exists"""
+        """deserializes the JSON file to __objects (only if the JSON file
+        (__file_path) exists ; otherwise, do nothing.
+        If the file doesn’t exist, no exception should be raised)"""
         try:
-            with open(FileStorage.__file_path, encoding='utf-8') as json_file:
-                FileStorage.__objects = json.load(json_file)
-            for value in FileStorage.__objects.copy().values():
-                classname = value['__class__']
-                self.new(eval(classname)(**value))
+            with open(FileStorage.__file_path, "r") as json_file:
+                dir_obj = json.load(json_file)
+                for i in dir_obj.items():
+                    nam = i["__class__"]
+                    del i["__class__"]
+                    self.new(eval(nam)(**i))
         except FileNotFoundError:
             pass
