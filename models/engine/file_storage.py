@@ -26,8 +26,8 @@ class FileStorage():
         for key, value in FileStorage.__objects.items():
             if not isinstance(value, dict):
                 FileStorage.__objects[key] = value.to_dict()
-        with open(FileStorage.__file_path, mode="w", encoding="utf-8") \
-             as json_file:
+        with open(FileStorage.__file_path,
+                  mode='w+', encoding='utf-8') as json_file:
             json.dump(FileStorage.__objects, json_file)
 
     def reload(self):
