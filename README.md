@@ -8,6 +8,10 @@
 hbhb This is the first step to build our first full web application: the AirBnB clone.
 This project currently only implements back-end.
 
+## CONTENT
+
+The files include in our repository that make our function work are:
+
 + **models**
   + ***engine***
     + file_storage.py
