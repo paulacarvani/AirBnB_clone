@@ -49,3 +49,22 @@ The hbnb console can be run in interactive mode and non-interactive mode. To run
 ```
 root@751e4fd4b311:~/AirBnB_clone# $ echo "help" | .console.py
 ```
+While running in interactive mode, the console displays a prompt for input
+
+[![prompt-for-input.jpg](https://i.postimg.cc/NFD69D5X/prompt-for-input.jpg)](https://postimg.cc/T5yLBrj2)
+```
+root@751e4fd4b311:~/AirBnB_clone# ./console.py
+(hbnb)
+```
+To exit the console, enter the quit command, or enter an EOF signal (ctrl-D).
+
+[![quit.jpg](https://i.postimg.cc/YCrpz3j9/quit.jpg)](https://postimg.cc/56rdx8Bd)
+```
+root@751e4fd4b311:~/AirBnB_clone# ./console.py
+(hbnb)  quit
+```
+[![EOF.jpg](https://i.postimg.cc/xCyx5KXf/EOF.jpg)](https://postimg.cc/1nXr5V02)
+```
+root@751e4fd4b311:~/AirBnB_clone# ./console.py
+(hbnb) EOF
+```
