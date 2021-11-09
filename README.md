@@ -8,7 +8,7 @@
 hbhb This is the first step to build our first full web application: the AirBnB clone.
 This project currently only implements back-end.
 
-## CONTENT
+## CONTENT :closed_book:
 
 The files include in our repository that make our function work are:
 
@@ -35,3 +35,17 @@ The files include in our repository that make our function work are:
   + test_state.py
   + test_user.py
 + **console.py**
+
+## Console :computer:
+
+The console is the command line interpreter that allows us to manage the hbnb backend (AirBnB clone). It can be used to manage and manipulate all the classes used by the application.
+
+## How to use the console :cd:
+
+The hbnb console can be run in interactive mode and non-interactive mode. To run the console in non-interactive mode, direct any of the run commands to the console.py file on the command line.
+
+[![non-interactive-mode.jpg](https://i.postimg.cc/nLsbzQj0/non-interactive-mode.jpg)](https://postimg.cc/cKN5kCcn)
+
+```
+root@751e4fd4b311:~/AirBnB_clone# $ echo "help" | .console.py
+```
