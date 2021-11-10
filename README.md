@@ -68,3 +68,33 @@ root@751e4fd4b311:~/AirBnB_clone# ./console.py
 root@751e4fd4b311:~/AirBnB_clone# ./console.py
 (hbnb) EOF
 ```
+
+## Console commands
+
+The hbnb console has the following commands:
+
+* **create**
+The new instance of the new class given is created. The class ID is printed and the instance is saved in the `file.json` file.
+
+* **Show**
+Prints the string representation of a class instance based on a given id.
+
+* **destroy**
+Removes a class instance based on a given id. The `file.json` storage file is updated accordingly.
+
+* **all**
+Prints the string representations of all instances of the given class. If the class name is not given, the command will print all instances of each class.
+
+* **count**.
+Retrieves the number of instances of a given class.
+
+* **update**.
+Updates a class instance based on a given id with a given key/value attribute pair or a dictionary of attribute pairs. If `update` is called with a single key/value attribute pair, only "simple" attributes can be updated.
+key/value attributes, only `single` attributes can be updated in addition, any attribute can be updated by supplying a dictionary.
+
+
+
+##  Authors :raising_hand: :raising_hand:
+
+**Paula Carbajal** [paulacarvani](https://github.com/paulacarvani)
+**Andrea Angola** [122-63](https://github.com/122-63)
