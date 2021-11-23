@@ -54,25 +54,23 @@
 }
 .popover
 {
-
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background: #FAFAFA;
-    padding-bottom: 25px;
     color: black;
     position: relative;
     display: none;
 }
 .amenities .popover
 {
-    padding: 20px 0;
-    margin-left: -5px;
-    margin-top: 28%;
+    padding-top: 10%;
 }
-.locations .popover
+.locations .popover li h2
 {
-    margin-top: 28%;
+	font-size: 16px;
+	margin: 0;
+	padding: 10% 0% 5% 10%;
 }
 .popover ul
 {
